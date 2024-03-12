@@ -13,6 +13,7 @@ class RouteServiceProvider extends ServiceProvider
     public const HOME = '/home';
 
     protected $namespace = 'App\\Http\\Controllers';
+    protected $namespaceAuth = 'App\\Http\\Controllers\\Auth';
 
     public function boot(): void
     {
@@ -24,8 +25,6 @@ class RouteServiceProvider extends ServiceProvider
     {
         $this->routes(
             function () {
-                Route::namespace($this->namespace)->group(base_path('routes/integracao_clientes.php'));
-                Route::namespace($this->namespace)->middleware('web')->group(base_path('routes/web.php'));
                 Route::namespace($this->namespaceAuth)->group(base_path('routes/auth.php'));
             }
         );
